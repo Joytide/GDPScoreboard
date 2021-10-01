@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://kit.fontawesome.com/e621e5414e.js" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='js/particles-js') }}"></script>
+        <title>GDP Scoreboard</title>
+    </head>
+    <body>
+        
+
+        <div class="bgimg w3-display-container w3-text-white w3-padding-large">
+            <div id="particles-js" >
+                <div>
+                    <div class="w3-padding-large w3-display-topright">
+                        <a href="/deposit"  ><i class="fas fa-check-square w3-padding-small" style="font-size:36px;" ></i></a>
+                        <a href="/settings"  ><i class="fas fa-cog" style="font-size:36px;" ></i></a>
+                    </div>
+                    <div class="w3-padding-large w3-display-topleft">
+                        <a href="/{{current_challenge}}/1"  ><i class="material-icons" style="font-size:42px;" >looks_one</i></a>
+                        <a href="/{{current_challenge}}/2"  ><i class="material-icons" style="font-size:42px;" >looks_two</i></a>
+                    </div>
+                </div>
+
+                <div class="opac w3-text-white w3-padding-large w3-display-middle ">
+                    <h1>GDP Module électronique - Pôle Léonard de Vinci</h1>
+                    <br><br/><br/>
+                    <h4>There is actually {{teams_number}} teams.</h4>
+                    <br/>
+                    <h4>The last team of the first group is currently team n°{{last_team}}.</h4>
+                    <br/>
+                    <h4>Current challenge is {{current_challenge}}.</h4>
+                    <br><br>
+                    {% for first_blood in first_bloods %}
+                    
+                        <h4><a href="/{{first_blood.challenge}}/{{first_blood.group}}"  >
+                            <i class="fas fa-crown">  
+                                Challenge {{first_blood.challenge}} first blood: team {{first_blood.team}} (Group {{first_blood.group}})
+                            </i>
+                        </a>
+                        </h4> 
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        particlesJS.load('particles-js', '/static/assets/particles.json', function() {
+        console.log('callback - particles.js config loaded');
+        });
+    </script>
+</html>

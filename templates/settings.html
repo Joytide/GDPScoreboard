@@ -1,0 +1,59 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+			<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+			<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+			<script src="https://kit.fontawesome.com/e621e5414e.js" crossorigin="anonymous"></script>
+			<title>GDP Scoreboard</title>
+		</head>
+		<body>
+			
+			<div class="bgimg w3-display-container w3-animate-opacity w3-text-white w3-padding-large">
+				
+				<div class="w3-padding-large">
+					<div class="w3-padding-large w3-display-topright">
+						<a href="/deposit"  ><i class="fas fa-check-square w3-padding-small" style="font-size:36px;" ></i></a>
+						<a href="/settings"  ><i class="fas fa-cog" style="font-size:36px;" ></i></a>
+					</div>
+					<div class="w3-padding-large w3-display-topleft">
+						<a href="/{{current_challenge}}/1"  ><i class="material-icons" style="font-size:42px;" >looks_one</i></a>
+						<a href="/{{current_challenge}}/2"  ><i class="material-icons" style="font-size:42px;" >looks_two</i></a>
+					</div>
+				</div>
+				<div class="w3-padding-large">
+					<h2>Team management</h2>
+					<form action="/new_team" method="POST">
+						<input type="text" name="number"  placeholder="number of teams to add"/>
+						<input type="text" name="password" placeholder="password" />
+						<input class="Button1" type="submit" value="Add teams" />
+					</form>
+					There is actually {{teams_number}} teams.
+					<form action="/last_team" method="POST">
+						<input type="text" name="last_team"  placeholder="new last team in group 1" />
+						<input type="text" name="password"  placeholder="password"/>
+						<input class="Button1" type="submit" value="Change team" />
+					</form>
+					The last team of the first group is currently team n°{{last_team}}.
+					<form action="/success" method="POST">
+						<input type="text" name="team"  placeholder="team"/>
+						<input type="text" name="challenge"  placeholder="challenge"/>
+						<input type="text" name="password"  placeholder="password"/>
+						<input class="Button1" type="submit" value="Manual validation" />
+					</form>
+					<br/>
+					<h2>Current challenge management</h2>
+					<form action="/challenge" method="POST">
+						<input type="text" name="challenge"  placeholder="current challenge" />
+						<input type="text" name="password"  placeholder="password"/>
+						<input class="Button1" type="submit" value="Change challenge" />
+					</form>
+					Current challenge is {{current_challenge}}.
+				</div>
+				
+			</div>
+		</body>
+	</html>

@@ -1,0 +1,46 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+			<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+			<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+			<script src="https://kit.fontawesome.com/e621e5414e.js" crossorigin="anonymous"></script>
+			<title>GDP Scoreboard</title>
+		</head>
+		<body>
+
+			<div class="bgimg w3-display-container w3-animate-opacity w3-text-white w3-padding-large">
+				<div class="w3-padding-large">
+					<div class="w3-padding-large w3-display-topright">
+						<a href="/deposit"  ><i class="fas fa-check-square w3-padding-small" style="font-size:36px;" ></i></a>
+						<a href="/settings"  ><i class="fas fa-cog" style="font-size:36px;" ></i></a>
+					</div>
+					<div class="w3-padding-large w3-display-topleft">
+						<a href="/{{current_challenge}}/1"  ><i class="material-icons" style="font-size:42px;" >looks_one</i></a>
+						<a href="/{{current_challenge}}/2"  ><i class="material-icons" style="font-size:42px;" >looks_two</i></a>
+					</div>
+				</div>
+				<div class="w3-padding-large">
+					<h2>Valider le challenge datasheet</h2>
+					<form action="/submit_datasheet" method="POST">
+						<input type="text" name="team"  placeholder="Votre équipe" />
+						<input type="text" name="token"  placeholder="token"/>
+						<input class="Button1" type="submit" value="Valider" />
+					</form>
+				</div>
+
+				<div class="w3-padding-large">
+					<h2>Valider le challenge mqqt subscription</h2>
+					<form action="/submit_mqqt_sub" method="POST">
+						<input type="text" name="team"  placeholder="Votre équipe" />
+						<input type="text" name="token"  placeholder="token"/>
+						<input class="Button1" type="submit" value="Valider" />
+					</form>
+				</div>
+				
+			</div>
+		</body>
+	</html>
